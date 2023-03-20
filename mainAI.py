@@ -40,7 +40,7 @@ async def acc_handler(message: types.Message):
             if await lib.is_user_registered(user_id=user_id):
                 user_photo = await bot.get_user_profile_photos(user_id=user_id, limit=1)
                 if user_photo.photos:
-                    await message.reply(await lib.acc(user_id), caption=acc_message, parse_mode='HTML')
+                    await message.reply(await lib.acc(user_id), parse_mode='HTML')
                 else:
                     await message.reply(acc_message)
             else:
