@@ -796,17 +796,14 @@ async def view(user_id):
         async with aiosqlite.connect('BD') as conn:
             async with conn.cursor() as cursor:
                 await cursor.execute('SELECT mod, user_name FROM users WHERE user_id = ?', (user_id,))
-                mod = await cursor.fetchone()
-                if mod[0] == 3:
+                info = await cursor.fetchone()
+                if info[0] == 3:
                     mod = 1
                 else:
                     mod = mod[0] + 1
                 await conn.execute("UPDATE users SET mod = ? WHERE user_id = ?", (mod, user_id))
                 await conn.commit()
-                print(mod)
-                print(mod[1])
-                print(mod[0][1])
-                message = f"▶️Успешно!\n{mod[1]}, теперь вид твоего аккаунта изменен!"
+                message = f"▶️Успешно!\n{info[0][1]}, теперь вид твоего аккаунта изменен!"
                 return message
     except Exception as e:
         traceback.print_exc()
