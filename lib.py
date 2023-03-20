@@ -147,7 +147,7 @@ async def leg(user_id):
                     message += f"║{columns[i]}: {row[i]}⭐️⭐️⭐️⭐️⭐️"
                     if i < len(columns) - 1:
                         message += "\n"
-                    if message == None
+                    if message == None:
                         message = "У тебя нет легендарок!"
             message = f"""║ ――――――――――――――――
 ║ Твои  легендарки:
@@ -172,7 +172,7 @@ async def epic(user_id):
                     message += f"║{columns[i]}: {row[i]}⭐️⭐️⭐️⭐️"
                     if i < len(columns) - 1:
                         message += "\n"
-                    if message == None
+                    if message == None:
                         message = "У тебя нет эпиков!"
             message = f"""║ ――――――――――――――――
 ║ Твои эпики:
