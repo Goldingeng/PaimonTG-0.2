@@ -94,7 +94,7 @@ async def acc(user_id):
                 columns = [description[0] for description in cursor.description]
                 for i in range(1, len(columns)):
                     if row[i] != 0:
-                        leg += f"║{columns[i]}: {row[i]}⭐️⭐️⭐️⭐️⭐️"
+                        leg += f"{columns[i]}: {row[i]}⭐️⭐️⭐️⭐️⭐️"
                         if i < len(columns) - 1:
                             leg += "\n"
                 message = f"""║ ――――――――――――――――
@@ -105,9 +105,9 @@ async def acc(user_id):
 ║ <b>Примогемы:</b>  {user_info[5]} 💠    
 ║ <b>Ранг:</b>  {user_info[2]} 🔮          <b>Опыт:</b>{user_info[3]}/1000 📜        
 ║ <b>История:</b>  {user_info[7]} ⏳     <b>Гарант:</b> {guarantee} 🧿
-║ ――――――――――――――――
-║{leg}
-║ ――――――――――――――――"""
+――――――――――――――――
+{leg}
+――――――――――――――――"""
             if user_info[12] == 3:
                 leg = ""
                 cursor = await conn.execute(f"SELECT * FROM personEpic WHERE user_id = {user_id}")
@@ -115,7 +115,7 @@ async def acc(user_id):
                 columns = [description[0] for description in cursor.description]
                 for i in range(1, len(columns)):
                     if row[i] != 0:
-                        leg += f"║{columns[i]}: {row[i]}⭐️⭐️⭐️⭐️⭐️"
+                        leg += f"{columns[i]}: {row[i]}⭐️⭐️⭐️⭐️⭐️"
                         if i < len(columns) - 1:
                             leg += "\n"
                 message = f"""║ ――――――――――――――――
@@ -126,9 +126,9 @@ async def acc(user_id):
 ║ <b>Примогемы:</b>  {user_info[5]} 💠    
 ║ <b>Ранг:</b>  {user_info[2]} 🔮       <b>Опыт:</b>{user_info[3]}/1000 📜        
 ║ <b>История:</b>  {user_info[7]} ⏳  <b>Гарант:</b> {guarantee} 🧿
-║ ――――――――――――――――
-║{leg}
-║ ――――――――――――――――"""
+ ――――――――――――――――
+{leg}
+――――――――――――――――"""
             await cursor.close()
             return message
     except Exception as e:
@@ -149,10 +149,10 @@ async def leg(user_id):
                         message += "\n"
                     if message == None:
                         message = "У тебя нет легендарок!"
-            message = f"""║ ――――――――――――――――
-║ Твои  легендарки:
-║{message}
-║ ――――――――――――――――"""
+            message = f"""――――――――――――――――
+Твои  легендарки:
+{message}
+――――――――――――――――"""
             await cursor.close()
             return message
     except Exception as e:
@@ -174,10 +174,10 @@ async def epic(user_id):
                         message += "\n"
                     if message == None:
                         message = "У тебя нет эпиков!"
-            message = f"""║ ――――――――――――――――
-║ Твои эпики:
-║{message}
-║ ――――――――――――――――"""
+            message = f"""――――――――――――――――
+Твои эпики:
+{message}
+――――――――――――――――"""
             await cursor.close()
             return message
     except Exception as e:
