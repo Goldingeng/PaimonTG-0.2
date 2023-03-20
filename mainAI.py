@@ -304,6 +304,7 @@ async def rank_handler(message: types.Message):
         await bot.send_message(chat_id=1167542251, text=f"Error: {e}")
 
 
+
 @dp.message_handler(commands=["price", "цена"])
 async def price_handler(message: types.Message):
     try:
