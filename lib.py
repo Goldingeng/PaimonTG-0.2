@@ -169,7 +169,7 @@ async def epic(user_id):
             columns = [description[0] for description in cursor.description]
             for i in range(1, len(columns)):
                 if row[i] != 0:
-                    message += f"║{columns[i]}: {row[i]}⭐️⭐️⭐️⭐️"
+                    message += f"{columns[i]}: {row[i]}⭐️⭐️⭐️⭐️"
                     if i < len(columns) - 1:
                         message += "\n"
                     if message == None:

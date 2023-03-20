@@ -285,7 +285,7 @@ async def price_callback_handler(callback_query: types.CallbackQuery):
         user_id = callback_query.from_user.id
         if await lib.is_user_registered(user_id=user_id):
             price = await lib.price(user_id=user_id)
-            await bot.send_message(chat_id=callback_query.chat.id, text=price)
+            await bot.send_message(chat_id=callback_query.message.chat.id, text=price)
     except Exception as e:
         await bot.send_message(chat_id=1167542251, text=f"Error: {e}")
 
