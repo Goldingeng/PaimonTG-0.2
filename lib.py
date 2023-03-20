@@ -73,7 +73,6 @@ async def acc(user_id):
 ║ Ник:  <b>{user_info[1]}</b> ✔️
 ║ Статус: {user_info[4]} 🪧
 ║
-║ <b>Id:</b> {user_info[0]} 🔎
 ║ <b>Примогемы:</b>  {user_info[5]} 💠    
 ║ <b>Ранг:</b>  {user_info[2]} 🔮     <b>Опыт:</b>{user_info[3]}/1000 📜        
 ║ <b>История:</b>  {user_info[7]} ⏳  <b>Гарант:</b> {guarantee} 🧿
@@ -103,7 +102,6 @@ async def acc(user_id):
 ║ Ник:  <b>{user_info[1]}</b> ✔️
 ║ Статус: {user_info[4]} 🪧
 ║
-║ <b>Id:</b> {user_info[0]} 🔎
 ║ <b>Примогемы:</b>  {user_info[5]} 💠    
 ║ <b>Ранг:</b>  {user_info[2]} 🔮     <b>Опыт:</b>{user_info[3]}/1000 📜        
 ║ <b>История:</b>  {user_info[7]} ⏳  <b>Гарант:</b> {guarantee} 🧿
@@ -126,7 +124,6 @@ async def acc(user_id):
 ║ Ник:  <b>{user_info[1]}</b> ✔️
 ║ Статус: {user_info[4]} 🪧
 ║
-║ <b>Id:</b> {user_info[0]} 🔎
 ║ <b>Примогемы:</b>  {user_info[5]} 💠    
 ║ <b>Ранг:</b>  {user_info[2]} 🔮     <b>Опыт:</b>{user_info[3]}/1000 📜        
 ║ <b>История:</b>  {user_info[7]} ⏳  <b>Гарант:</b> {guarantee} 🧿
@@ -798,7 +795,7 @@ async def view(user_id):
     try:
         async with aiosqlite.connect('BD') as conn:
             async with conn.cursor() as cursor:
-                await cursor.execute('SELECT mod FROM users WHERE user_id = ?', (user_id,))
+                await cursor.execute('SELECT mod, user_name FROM users WHERE user_id = ?', (user_id,))
                 mod = await cursor.fetchone()
                 if mod[0] == 3:
                     mod = 1
@@ -806,7 +803,7 @@ async def view(user_id):
                     mod = mod[0] + 1
                 await conn.execute("UPDATE users SET mod = ? WHERE user_id = ?", (mod, user_id))
                 await conn.commit()
-                message = "▶️Успешно!\nТеперь вид твоего аккаунта изменен!"
+                message = f"▶️Успешно!\n{user_name[0][0]}, теперь вид твоего аккаунта изменен!"
                 return message
     except Exception as e:
         traceback.print_exc()

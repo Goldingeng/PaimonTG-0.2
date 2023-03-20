@@ -61,8 +61,6 @@ async def acc_handler(message: types.Message):
                     button4 = types.InlineKeyboardButton(text="Вид", callback_data="view")
                     button5 = types.InlineKeyboardButton(text="Баннер", callback_data="banner")
                     keyboard.row(button4, button5)
-                    button6 = types.InlineKeyboardButton(text="Канал автора", url = "https://t.me/bannersim")
-                    keyboard.row(button6)
                     await bot.send_photo(chat_id=message.chat.id, photo=photo_file_id, caption=acc_message,
                                           parse_mode='HTML', reply_markup=keyboard)
                 else:
