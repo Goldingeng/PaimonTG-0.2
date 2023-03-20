@@ -261,7 +261,7 @@ async def blessing_handler(callback_query: types.CallbackQuery):
         user_id = callback_query.from_user.id
         if await lib.is_user_registered(user_id=user_id):
             await bot.answer_callback_query(callback_query.id)
-            await bot.send_message(callback_query.chat.id, await lib.blessing(user_id=user_id))
+            await bot.send_message(callback_query.message.chat.id, await lib.blessing(user_id=user_id))
         else:
             await reg_handler(callback_query.message)
     except Exception as e:
