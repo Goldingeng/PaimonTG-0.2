@@ -106,6 +106,7 @@ async def acc(user_id):
 ║ <b>Ранг:</b>  {user_info[2]} 🔮     <b>Опыт:</b>{user_info[3]}/1000 📜        
 ║ <b>История:</b>  {user_info[7]} ⏳  <b>Гарант:</b> {guarantee} 🧿
 ――――――――――――――――
+
 {leg}
 ――――――――――――――――"""
             if user_info[12] == 3:
@@ -128,6 +129,7 @@ async def acc(user_id):
 ║ <b>Ранг:</b>  {user_info[2]} 🔮     <b>Опыт:</b>{user_info[3]}/1000 📜        
 ║ <b>История:</b>  {user_info[7]} ⏳  <b>Гарант:</b> {guarantee} 🧿
 ――――――――――――――――
+
 {leg}
 ――――――――――――――――"""
             await cursor.close()
@@ -139,11 +141,11 @@ async def acc(user_id):
 async def leg(user_id):
     try:
         async with aiosqlite.connect('BD') as conn:
+            cursor = await conn.execute(f"SELECT user_name FROM users WHERE user_id = {user_id}")
+            user_name = await cursor.fetchone()
             message = ""
             cursor = await conn.execute(f"SELECT * FROM personLegend WHERE user_id = {user_id}")
             row = await cursor.fetchone()
-            cursor = await conn.execute(f"SELECT user_name FROM users WHERE user_id = {user_id}")
-            user_name = await cursor.fetchone()
             columns = [description[0] for description in cursor.description]
             for i in range(1, len(columns)):
                 if row[i] != 0:
@@ -153,7 +155,9 @@ async def leg(user_id):
                     if message == None:
                         message = "У тебя нет легендарок!"
             message = f"""――――――――――――――――
-║{user_name[0]}, твои  легендарки:
+
+{user_name[0]}, твои  легендарки:
+
 {message}
 ――――――――――――――――"""
             await cursor.close()
@@ -167,10 +171,10 @@ async def epic(user_id):
     try:
         async with aiosqlite.connect('BD') as conn:
             message = ""
-            cursor = await conn.execute(f"SELECT * FROM personEpic WHERE user_id = {user_id}")
-            row = await cursor.fetchone()
             cursor = await conn.execute(f"SELECT user_name FROM users WHERE user_id = {user_id}")
             user_name = await cursor.fetchone()
+            cursor = await conn.execute(f"SELECT * FROM personEpic WHERE user_id = {user_id}")
+            row = await cursor.fetchone()
             columns = [description[0] for description in cursor.description]
             for i in range(1, len(columns)):
                 if row[i] != 0:
@@ -180,7 +184,9 @@ async def epic(user_id):
                     if message == None:
                         message = "У тебя нет эпиков!"
             message = f"""――――――――――――――――
-║{user_name[0]}, твои эпики:
+
+{user_name[0]}, твои эпики:
+
 {message}
 ――――――――――――――――"""
             await cursor.close()
