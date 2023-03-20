@@ -737,30 +737,40 @@ async def price(user_id):
                 # Home
                 if rows[0][0] == 5:
                     hom = "Максимальный уровень"
+                if rows[0][0] == 0:
+                    hom = 10000  
                 else:
-                    hom = rows[0][0] * 10000
+                    hom = rows[0][0] + * 10000
 
                 # Pool
                 if rows[0][1] == 5:
                     pool = "Максимальный уровень"
+                if rows[0][1] == 0:
+                    pool = 10000
                 else:
                     pool = rows[0][1] * 10000
 
                 # Fence
                 if rows[0][2] == 5:
                     fence = "Максимальный уровень"
+                if rows[0][2] == 0:
+                    fence = 10000                    
                 else:
                     fence = rows[0][2] * 10000
 
                 # Home Improvement
                 if rows[0][3] == 5:
                     home_imp = "Максимальный уровень"
+                if rows[0][3] == 0:
+                    home_imp = 10000
                 else:
                     home_imp = rows[0][3] * 10000
 
                 # Scenery
                 if rows[0][4] == 5:
                     scenery = "Максимальный уровень"
+                if rows[0][4] == 0:
+                    scenery = 10000
                 else:
                     scenery = rows[0][4] * 10000
 
