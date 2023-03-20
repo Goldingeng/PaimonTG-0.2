@@ -227,7 +227,7 @@ async def daily(user_id):
                 cursor = await conn.execute("UPDATE users SET time = ? WHERE user_id = ?", (datetime.datetime.now().hour, user_id))
                 await cursor.close()
                 await conn.commit()
-                message = f"▶️ Ты получил {amount} примогемов 💠 и {exp} опыта 📜!"
+                message = f"▶️ Ты получил {amount} примогемов 💠\nи {exp} опыта 📜! Потрать их с умом!"
             else:
                 message = "▶️ Ты уже запрашивал награду!\nПопробуй через час! 🕐"
             return message
@@ -253,7 +253,7 @@ async def moon(user_id, moon):
                 else:
                     message = "▶️ Ты уже запрашивал награду.\nПопробуй через час! 🕐"
             else:
-                message = "▶️ Отказано!\nЧто бы получать дополнительные подарки, оформи подписку Telegram Premium"
+                message = "▶️ Отказано!\nЧто бы получать дополнительные подарки, оформи подписку Telegram Premium :)"
             return message
     except Exception as e:
          print(e)
