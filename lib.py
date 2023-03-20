@@ -740,7 +740,7 @@ async def price(user_id):
                 if rows[0][0] == 0:
                     hom = 10000  
                 else:
-                    hom = rows[0][0] + * 10000
+                    hom = rows[0][0]  * 10000
 
                 # Pool
                 if rows[0][1] == 5:
