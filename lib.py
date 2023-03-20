@@ -369,12 +369,12 @@ async def twist(user_id):
                             if new_value <= 6:
                                 cursor = await conn.execute(f"UPDATE personLegend SET {banner} = ? WHERE user_id = ?", (new_value, user_id))
                                 cursor = await conn.execute("UPDATE users SET guarantee = ?, hystory = ?, hystoryEpic = hystoryEpic + 1 WHERE user_id = ?", (1, 0, user_id))
-                                reward.append(f"║ 🟨<b>{(banner)}⭐⭐⭐⭐⭐</b>\n")
+                                reward.append(f"🟨<b>{(banner)}⭐⭐⭐⭐⭐</b>\n")
                                 await conn.commit()
                             else:
                                 prim += 1600
                                 cursor = await conn.execute("UPDATE users SET guarantee = ?, hystory = ?, hystoryEpic = hystoryEpic + 1 WHERE user_id = ?", (1, 0, user_id))
-                                reward.append(f"║ 🟨<b>{(banner)}⭐⭐⭐⭐⭐(1600💠)</b>\n")                        
+                                reward.append(f"🟨<b>{(banner)}⭐⭐⭐⭐⭐(1600💠)</b>\n")                        
                                 await conn.commit()
                     else:
                         if random.randint(1, 2) == 1:
@@ -385,11 +385,11 @@ async def twist(user_id):
                                 if new_value <= 6:
                                     cursor = await conn.execute(f"UPDATE personLegend SET {banner_baza} = ? WHERE user_id = ?", (new_value, user_id))
                                     cursor = await conn.execute("UPDATE users SET guarantee = ?, hystory = ?, hystoryEpic = hystoryEpic + 1 WHERE user_id = ?", (2, 0, user_id))
-                                    reward.append(f"║ 🟨<b>{(banner_baza)}⭐⭐⭐⭐⭐</b>\n")
+                                    reward.append(f"🟨<b>{(banner_baza)}⭐⭐⭐⭐⭐</b>\n")
                                     await conn.commit()
                                 else:
                                     prim += 1600
-                                    reward.append(f"║ 🟨<b>{(banner_baza)}⭐⭐⭐⭐⭐(1600💠)</b>\n")   
+                                    reward.append(f"🟨<b>{(banner_baza)}⭐⭐⭐⭐⭐(1600💠)</b>\n")   
                                     cursor = await conn.execute("UPDATE users SET guarantee = ?, hystory = ?, hystoryEpic = hystoryEpic + 1 WHERE user_id = ?", (2, 0, user_id))
                                     await conn.commit()
                         else:
@@ -401,11 +401,11 @@ async def twist(user_id):
                                     cursor = await conn.execute(f"UPDATE personLegend SET {banner} = ? WHERE user_id = ?", (new_value, user_id))
                                     cursor = await conn.execute("UPDATE users SET guarantee = ?, hystory = ?, hystoryEpic = hystoryEpic + 1 WHERE user_id = ?", (1, 0, user_id))
                                     await conn.commit()
-                                    reward.append(f"║ 🟨<b>{(banner)}⭐⭐⭐⭐⭐</b>\n")
+                                    reward.append(f"🟨<b>{(banner)}⭐⭐⭐⭐⭐</b>\n")
                                 else:
                                     prim += 1600
                                     cursor = await conn.execute("UPDATE users SET guarantee = ?, hystory = ?, hystoryEpic = hystoryEpic + 1 WHERE user_id = ?", (1, 0, user_id))
-                                    reward.append(f"║ 🟨<b>{(banner)}⭐⭐⭐⭐⭐(1600💠)</b>\n")
+                                    reward.append(f"🟨<b>{(banner)}⭐⭐⭐⭐⭐(1600💠)</b>\n")
                                     await conn.commit()
                 else:
                     result = random.choices([0, 1], weights=[1 - chance, chance])[0]
@@ -419,11 +419,11 @@ async def twist(user_id):
                                     cursor = await conn.execute(f"UPDATE personLegend SET {banner} = ? WHERE user_id = ?", (new_value, user_id))
                                     cursor = await conn.execute("UPDATE users SET guarantee = ?, hystory = ?, hystoryEpic = hystoryEpic + 1 WHERE user_id = ?", (1, 0, user_id))
                                     await conn.commit()
-                                    reward.append(f"║ 🟨<b>{(banner)}⭐⭐⭐⭐⭐</b>\n")
+                                    reward.append(f"🟨<b>{(banner)}⭐⭐⭐⭐⭐</b>\n")
                                 else:
                                     prim += 1600
                                     cursor = await conn.execute("UPDATE users SET guarantee = ?, hystory = ?, hystoryEpic = hystoryEpic + 1 WHERE user_id = ?", (1, 0, user_id))
-                                    reward.append(f"║ 🟨<b>{(banner)}⭐⭐⭐⭐⭐(1600💠)</b>\n")
+                                    reward.append(f"🟨<b>{(banner)}⭐⭐⭐⭐⭐(1600💠)</b>\n")
                                     await conn.commit()
                         else:
                             if random.randint(1, 2) == 1:
@@ -435,11 +435,11 @@ async def twist(user_id):
                                         cursor = await conn.execute(f"UPDATE personLegend SET {banner_baza} = ? WHERE user_id = ?", (new_value, user_id))
                                         cursor = await conn.execute("UPDATE users SET guarantee = ?, hystory = ?, hystoryEpic = hystoryEpic + 1 WHERE user_id = ?", (2, 0, user_id))
                                         await conn.commit()
-                                        reward.append(f"║ 🟨<b>{(banner_baza)}⭐⭐⭐⭐⭐</b>\n")
+                                        reward.append(f"🟨<b>{(banner_baza)}⭐⭐⭐⭐⭐</b>\n")
                                     else:
                                         prim += 1600
                                         cursor = await conn.execute("UPDATE users SET guarantee = ?, hystory = ?, hystoryEpic = hystoryEpic + 1 WHERE user_id = ?", (2, 0, user_id))
-                                        reward.append(f"<b>║ 🟨{(banner_baza)}⭐⭐⭐⭐⭐(1600💠)</b>\n")
+                                        reward.append(f"<b>🟨{(banner_baza)}⭐⭐⭐⭐⭐(1600💠)</b>\n")
                                         await conn.commit()
                             else:
                                 cursor = await conn.execute(f"SELECT {banner} FROM personLegend WHERE user_id = ?", (user_id,))
@@ -450,10 +450,10 @@ async def twist(user_id):
                                         cursor = await conn.execute(f"UPDATE personLegend SET {banner} = ? WHERE user_id = ?", (new_value, user_id))
                                         cursor = await conn.execute("UPDATE users SET guarantee = ?, hystory = ?, hystoryEpic = hystoryEpic + 1 WHERE user_id = ?", (1, 0, user_id))
                                         await conn.commit()
-                                        reward.append(f"║ 🟨<b>{(banner)}⭐⭐⭐⭐⭐</b>\n")
+                                        reward.append(f"🟨<b>{(banner)}⭐⭐⭐⭐⭐</b>\n")
                                     else:
                                         prim += 1600
-                                        reward.append(f"║ 🟨<b>{(banner)}⭐⭐⭐⭐⭐(1600💠)</b>\n")
+                                        reward.append(f"🟨<b>{(banner)}⭐⭐⭐⭐⭐(1600💠)</b>\n")
                                         cursor = await conn.execute("UPDATE users SET guarantee = ?, hystory = ?, hystoryEpic = hystoryEpic + 1 WHERE user_id = ?", (1, 0, user_id))
                                         await conn.commit()
                     else:
@@ -467,10 +467,10 @@ async def twist(user_id):
                                     cursor = await conn.execute(f"UPDATE personEpic SET {epic} = ? WHERE user_id = ?", (new_value, user_id))
                                     cursor = await conn.execute("UPDATE users SET hystoryEpic = ?, hystory = hystory + 1 WHERE user_id = ?", (0, user_id))
                                     await conn.commit()
-                                    reward.append(f"║ 🟪<b>{(epic)}⭐⭐⭐⭐</b>\n")
+                                    reward.append(f"🟪<b>{(epic)}⭐⭐⭐⭐</b>\n")
                                 else:
                                     prim += 400
-                                    reward.append(f"║ 🟪<b>{(epic)}⭐⭐⭐⭐(400💠)</b>\n")
+                                    reward.append(f"🟪<b>{(epic)}⭐⭐⭐⭐(400💠)</b>\n")
                                     cursor = await conn.execute("UPDATE users SET hystoryEpic = ?, hystory = hystory + 1 WHERE user_id = ?", (0, user_id))
                                     await conn.commit()
                         else:
@@ -486,14 +486,14 @@ async def twist(user_id):
                                         cursor = await conn.execute(f"UPDATE personEpic SET {epic} = ? WHERE user_id = ?", (new_value, user_id))
                                         cursor = await conn.execute("UPDATE users SET hystory = hystory + 1 WHERE user_id = ?", (user_id,))
                                         await conn.commit()
-                                        reward.append(f"<b>║ 🟪{(epic)}⭐⭐⭐⭐</b>\n")
+                                        reward.append(f"<b>🟪{(epic)}⭐⭐⭐⭐</b>\n")
                                     else:
                                         prim += 400
-                                        reward.append(f"<b>║ 🟪{(epic)}⭐⭐⭐⭐(400💠)</b>\n")
+                                        reward.append(f"<b>🟪{(epic)}⭐⭐⭐⭐(400💠)</b>\n")
                                         cursor = await conn.execute("UPDATE users SET hystory = hystory + 1 WHERE user_id = ?", (user_id,))
                                         await conn.commit()
                             else:
-                                reward.append(f"║ ⬜️{random.choice(three_star)}⭐⭐⭐(15💠)\n")
+                                reward.append(f"⬜️{random.choice(three_star)}⭐⭐⭐(15💠)\n")
                                 prim += 15
                                 cursor = await conn.execute("UPDATE users SET hystory = hystory + 1, hystoryEpic = hystoryEpic + 1 WHERE user_id = ?", (user_id,))
                                 await conn.commit()
