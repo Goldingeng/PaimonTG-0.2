@@ -539,15 +539,6 @@ async def bones(user_id, number):
     except Exception as e:
         traceback.print_exc()
 
-async def name(user_id):
-    try:
-        async with aiosqlite.connect('BD') as conn:
-            cursor = await conn.execute("SELECT user_name FROM users WHERE user_id = ?", (promo,))
-            user_name = await cursor.fetchone()
-            return user_name
-    except Exception as e:
-        traceback.print_exc()
-
 #Проверка промокода
 async def promo(promo, user_id):
     try:

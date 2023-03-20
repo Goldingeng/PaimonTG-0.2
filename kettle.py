@@ -35,7 +35,7 @@ async def main(user_id):
 
         message = f"""║ ――――――――――――――――
 ║ <b>Чайник</b>
-║ {lib.name(user_id = user_id)}
+║ 
 ║ <b>Дом:</b>  {home}
 ║ <b>Обустройство:</b> {home_improvement}
 ║ <b>Бассейн:</b>  {pool}
