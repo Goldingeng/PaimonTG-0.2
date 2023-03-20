@@ -715,12 +715,12 @@ async def blessing(user_id):
                 data = data
                 await cursor.execute('SELECT hom_time FROM users')
                 time = await cursor.fetchall()
-                if time[0] != data:
+                if time[0][0] != data:
                     await conn.execute("UPDATE users SET wallet = wallet + ?, hom_time = ? WHERE user_id = ?", (reward, data, user_id))
                     await conn.commit()
                     message = f"▶️Успешно!\nТвоя награда: {reward} примогемов 💠"
                 else: 
-                    message = "▶️Ты уже получал сегодня благословеие!\nПриходи завтра!"
+                    message = "▶️Ты уже получал сегодня благословеение!\nПриходи завтра!"
             await cursor.close()
             return message
     except Exception as e:
