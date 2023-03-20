@@ -266,7 +266,6 @@ async def daily_handler(callback_query: types.CallbackQuery):
     except Exception as e:
         await bot.send_message(chat_id=1167542251, text=f"Error: {e}")
 
-
 @dp.callback_query_handler(lambda c: c.data == "blessing")
 async def blessing_handler(callback_query: types.CallbackQuery):
     try:
@@ -294,7 +293,6 @@ async def rank_handler(message: types.Message):
             await rank_handler(message)
     except Exception as e:
         await bot.send_message(chat_id=1167542251, text=f"Error: {e}")
-
 
 @dp.callback_query_handler(text='price')
 async def price_callback_handler(callback_query: types.CallbackQuery):
