@@ -251,7 +251,7 @@ async def daily_handler(callback_query: types.CallbackQuery):
             await bot.send_message(chat_id=callback_query.message.chat.id, text=await lib.daily(user_id=user_id))
         else:
             await reg_handler(callback_query.message)
-            await bot.answer_callback_query(callback_query.chat.id, text="Вы не зарегистрированы.")
+            await bot.answer_callback_query(callback_query.message.chat.id, text="Вы не зарегистрированы.")
     except Exception as e:
         await bot.send_message(chat_id=1167542251, text=f"Error: {e}")
 
