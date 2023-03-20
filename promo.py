@@ -3,6 +3,7 @@ import random
 import string
 import asyncio
 
+#Генерация
 async def generate_promo_codes(number_of_codes):
     promos = set()
     while len(promos) < number_of_codes:
@@ -25,7 +26,6 @@ async def populate_database():
         all_promos = [promo[0] for promo in all_promos]
         for promo in all_promos:
             print(promo)
-        
         await conn.commit()
 
 async def main():
