@@ -800,10 +800,10 @@ async def view(user_id):
                 if info[0] == 3:
                     mod = 1
                 else:
-                    mod = mod[0] + 1
+                    mod = info[0] + 1
                 await conn.execute("UPDATE users SET mod = ? WHERE user_id = ?", (mod, user_id))
                 await conn.commit()
-                message = f"▶️Успешно!\n{info[0][1]}, теперь вид твоего аккаунта изменен!"
+                message = f"▶️Успешно!\n{info[1]}, теперь вид твоего аккаунта изменен!"
                 return message
     except Exception as e:
         traceback.print_exc()
