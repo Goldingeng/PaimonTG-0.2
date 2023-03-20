@@ -539,6 +539,12 @@ async def bones(user_id, number):
     except Exception as e:
         traceback.print_exc()
 
+async def promo(promo, user_id):
+    try:
+        async with aiosqlite.connect('BD') as conn:
+            cursor = await conn.execute("SELECT user_name FROM users WHERE user_id = ?", (promo,))
+            promo_data = await cursor.fetchone()
+
 #Проверка промокода
 async def promo(promo, user_id):
     try:
@@ -610,6 +616,8 @@ async def info_kettle(user_id):
             cursor = await conn.cursor()
             await cursor.execute("SELECT * FROM kettle WHERE user_id = ?", (user_id,))
             kettle = await cursor.fetchone()
+            await cursor.execute("SELECT user_name FROM users WHERE user_id = ?", (user_id,))
+            user_name = await cursor.fetchone()
             await cursor.close()
         return kettle
     except Exception as e:
