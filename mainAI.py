@@ -693,6 +693,4 @@ async def view_handler(message: types.Message):
         traceback.print_exc()
 
 if __name__ == '__main__':
-    loop = asyncio.get_event_loop()
-    executor.start_polling(dp, loop=loop)
-    loop.run_forever()
+    asyncio.run(executor.start_polling(dp))
