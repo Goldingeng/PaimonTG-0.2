@@ -2,7 +2,7 @@ import lib
 
 async def main(user_id):
     try:
-        kettle_info, user_name = await info_kettle(user_id)
+        kettle_info, user_name = await lib.info_kettle(user_id = user_id)
         home = "Отсутствует" if kettle_info[1] == 0 else "Халупа 🛖" \
                    if kettle_info[1] == 1 else "Сломаный дом 🏚️" \
                    if kettle_info[1] == 2 else "Обычный дом 🏠" \
