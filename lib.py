@@ -713,8 +713,11 @@ async def blessing(user_id):
                 reward = result_sum * 500
                 data = datetime.datetime.now().day
                 data = data
-                await cursor.execute('SELECT hom_time FROM users')
+                print(data)
+                await cursor.execute('SELECT hom_time FROM users WHERE user_id = ?',(user_id,))
                 time = await cursor.fetchall()
+                print(time)
+                print(time[0][0])
                 if time[0][0] != data:
                     await conn.execute("UPDATE users SET wallet = wallet + ?, hom_time = ? WHERE user_id = ?", (reward, data, user_id))
                     await conn.commit()
