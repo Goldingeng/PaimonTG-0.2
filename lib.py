@@ -494,9 +494,9 @@ async def twist(user_id):
             cursor = await conn.execute(f"UPDATE users SET exp = exp + 150, wallet = (wallet - 1600) + {prim} WHERE user_id = ?", (user_id,))
             await conn.commit()
             await cursor.close()
-        message_banner = "▶️Твоя награда:\n"
+        message_banner = "Твоя награда:\n"
         message_twist_str = "".join(reward)
-        message_banner += f"""{info[5]}, {message_twist_str}
+        message_banner += f"""▶️{info[5]},{message_twist_str}
 ▶️Примогемы: {prim} 💠
 ▶️Опыт: 150 📜"""
         return f"{message_banner}"
@@ -787,14 +787,13 @@ async def price(user_id):
                     scenery = rows[0][4] * 5000
 
                 message = f"""║ ――――――――――――――――
-
 ║{user_name[0]}, цена твоец прокачки          
 ║ Дом: {hom} 💠
 ║ Бассейн: {pool} 💠
 ║ Забор: {fence} 💠
 ║ Обустройсвто: {home_imp} 💠
 ║ Оформление: {scenery} 💠
-║ Пример улучшения /up "оформление"
+║ Пример улучшения /up оформление
 ║ ――――――――――――――――                
 """
                 return message
