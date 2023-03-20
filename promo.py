@@ -14,7 +14,7 @@ async def generate_promo_codes(number_of_codes):
 async def populate_database():
     number_of_promos = int(input("How many promo codes do you want to generate? "))
     promos = await generate_promo_codes(number_of_promos)
-    rewards = [random.randint(300, 1400) for _ in range(number_of_promos)]
+    rewards = [random.randint(900, 4000) for _ in range(number_of_promos)]
     
     async with aiosqlite.connect('BD') as conn:
         await conn.execute("DELETE FROM promo")

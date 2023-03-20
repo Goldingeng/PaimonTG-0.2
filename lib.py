@@ -564,6 +564,8 @@ async def promo(promo, user_id):
                     else:
                         await conn.execute("UPDATE promo SET status = ? WHERE promo = ?", (user_id, promo))
                         await conn.commit()
+                        await conn.execute(f"UPDATE users SET wallet = wallet + {promo_data[2]} WHERE user_id = ?", (user_id,))
+                        await conn.commit()
                         message = f"▶️Успешно!\nТвоя награда:{promo_data[2]} примогемов! 💠"
                 else:
                     message = "▶️Этот промокод уже использовали"
