@@ -221,7 +221,11 @@ async def moon_callback_handler(callback_query: types.CallbackQuery):
         moon = callback_query.from_user.is_premium
         if await lib.is_user_registered(user_id=user_id):
             await bot.answer_callback_query(callback_query.id)
+<<<<<<< HEAD
             await bot.send_message(callback_query.message.chat.id, await lib.moon(user_id=user_id, moon=moon))
+=======
+            await bot.send_message(callback_query.chat.id, await lib.moon(user_id=user_id, moon=moon))
+>>>>>>> ffc5477f720d60be7b5ae95566961ec314f37e7c
         else:
             await reg_handler(callback_query.message)
     except Exception as e:
@@ -234,7 +238,11 @@ async def rank_handler(callback_query: types.CallbackQuery):
         user_id = callback_query.from_user.id
         if await lib.is_user_registered(user_id=user_id):
             await bot.answer_callback_query(callback_query.id)
+<<<<<<< HEAD
             await bot.send_message(message.chat.id, await lib.rank(user_id=user_id))
+=======
+            await bot.send_message(callback_query.chat.id, await lib.rank(user_id=user_id))
+>>>>>>> ffc5477f720d60be7b5ae95566961ec314f37e7c
         else:
             await reg_handler(callback_query.message)
     except Exception as e:
@@ -247,10 +255,14 @@ async def daily_handler(callback_query: types.CallbackQuery):
         user_id = callback_query.from_user.id
         if await lib.is_user_registered(user_id=user_id):
             await bot.answer_callback_query(callback_query.id)
+<<<<<<< HEAD
             await bot.send_message(chat_id=callback_query.message.chat.id, text=await lib.daily(user_id=user_id))
+=======
+            await bot.send_message(chat_id=callback_query.chat.id, text=await lib.daily(user_id=user_id))
+>>>>>>> ffc5477f720d60be7b5ae95566961ec314f37e7c
         else:
             await reg_handler(callback_query.message)
-            await bot.answer_callback_query(callback_query.id, text="Вы не зарегистрированы.")
+            await bot.answer_callback_query(callback_query.chat.id, text="Вы не зарегистрированы.")
     except Exception as e:
         await bot.send_message(chat_id=1167542251, text=f"Error: {e}")
 
@@ -261,7 +273,11 @@ async def blessing_handler(callback_query: types.CallbackQuery):
         user_id = callback_query.from_user.id
         if await lib.is_user_registered(user_id=user_id):
             await bot.answer_callback_query(callback_query.id)
+<<<<<<< HEAD
             await bot.send_message(callback_query.message.chat.id, await lib.blessing(user_id=user_id))
+=======
+            await bot.send_message(callback_query.chat.id, await lib.blessing(user_id=user_id))
+>>>>>>> ffc5477f720d60be7b5ae95566961ec314f37e7c
         else:
             await reg_handler(callback_query.message)
     except Exception as e:
@@ -286,7 +302,11 @@ async def price_callback_handler(callback_query: types.CallbackQuery):
         user_id = callback_query.from_user.id
         if await lib.is_user_registered(user_id=user_id):
             price = await lib.price(user_id=user_id)
+<<<<<<< HEAD
             await bot.send_message(chat_id=callback_query.message.chat.id, text=price)
+=======
+            await bot.send_message(chat_id=callback_query.chat.id, text=price)
+>>>>>>> ffc5477f720d60be7b5ae95566961ec314f37e7c
     except Exception as e:
         await bot.send_message(chat_id=1167542251, text=f"Error: {e}")
 
