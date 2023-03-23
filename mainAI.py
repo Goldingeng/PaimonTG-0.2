@@ -38,33 +38,23 @@ async def acc_handler(message: types.Message):
         if message.reply_to_message:
             user_id = message.reply_to_message.from_user.id
             if await lib.is_user_registered(user_id=user_id):
-                user_photo = await bot.get_user_profile_photos(user_id=user_id, limit=1)
-                if user_photo.photos:
-                    await message.reply(await lib.acc(user_id), parse_mode='HTML')
-                else:
-                    await message.reply(acc_message)
+                await message.reply(acc_message, parse_mode='HTML')
             else:
                 await message.reply("Этот пользователь еще не зарегистрирован!")
         else:
             user_id = message.from_user.id
             if await lib.is_user_registered(user_id=user_id):
                 acc_message = await lib.acc(user_id)
-                user_photo = await bot.get_user_profile_photos(user_id=user_id, limit=1)
-                if user_photo.photos:
-                    photo_file_id = user_photo.photos[0][-1].file_id
-                    keyboard = types.InlineKeyboardMarkup()
-                    button1 = types.InlineKeyboardButton(text="🫖", callback_data="kettle")
-                    keyboard.row(button1)
-                    button2 = types.InlineKeyboardButton(text="🟪", callback_data="epic")
-                    button3 = types.InlineKeyboardButton(text="🟨", callback_data="leg")
-                    keyboard.row(button2, button3)
-                    button4 = types.InlineKeyboardButton(text="Вид", callback_data="view")
-                    button5 = types.InlineKeyboardButton(text="Баннер", callback_data="banner")
-                    keyboard.row(button4, button5)
-                    await bot.send_photo(chat_id=message.chat.id, photo=photo_file_id, caption=acc_message,
-                                          parse_mode='HTML', reply_markup=keyboard)
-                else:
-                    await message.reply(acc_message)
+                keyboard = types.InlineKeyboardMarkup()
+                button1 = types.InlineKeyboardButton(text="🫖", callback_data="kettle")
+                keyboard.row(button1)
+                button2 = types.InlineKeyboardButton(text="🟪", callback_data="epic")
+                button3 = types.InlineKeyboardButton(text="🟨", callback_data="leg")
+                keyboard.row(button2, button3)
+                button4 = types.InlineKeyboardButton(text="Вид", callback_data="view")
+                button5 = types.InlineKeyboardButton(text="Баннер", callback_data="banner")
+                keyboard.row(button4, button5)
+                await message.reply(acc_message, parse_mode='HTML')
             else:
                 await reg_handler(message)
                 await acc_handler(message)
@@ -121,13 +111,8 @@ async def leg_callback_handler(callback_query: types.CallbackQuery):
             message = callback_query.message
             user_id = callback_query.from_user.id
             if await lib.is_user_registered(user_id=user_id):
-                leg_message = await lib.leg(user_id)
-                user_photo = await bot.get_user_profile_photos(user_id=user_id, limit=1)
-                if user_photo.photos:
-                    photo_file_id = user_photo.photos[0][-1].file_id
-                    await bot.send_photo(chat_id=callback_query.message.chat.id, photo=photo_file_id, caption=leg_message, parse_mode='HTML')
-                else:
-                    await message.reply(leg_message)
+                epic_message = await lib.leg(user_id)
+                await bot.send_message(chat_id=callback_query.message.chat.id,text=epic_message, parse_mode='HTML')
             else:
                 await reg_handler(message)
                 await leg_handler(message)
@@ -146,12 +131,7 @@ async def epic_callback_handler(callback_query: types.CallbackQuery):
             user_id = callback_query.from_user.id
             if await lib.is_user_registered(user_id=user_id):
                 epic_message = await lib.epic(user_id)
-                user_photo = await bot.get_user_profile_photos(user_id=user_id, limit=1)
-                if user_photo.photos:
-                    photo_file_id = user_photo.photos[0][-1].file_id
-                    await bot.send_photo(chat_id=callback_query.message.chat.id, photo=photo_file_id, caption=epic_message, parse_mode='HTML')
-                else:
-                    await message.reply(epic_message)
+                await bot.send_message(chat_id=callback_query.message.chat.id,text=epic_message, parse_mode='HTML')
             else:
                 await reg_handler(message)
                 await epic_handler(message)
@@ -309,6 +289,7 @@ async def price_handler(message: types.Message):
     except Exception as e:
         traceback.print_exc()
 
+
 @dp.message_handler(commands=["leg", "леги"])
 async def leg_handler(message: types.Message):
     try:
@@ -316,24 +297,14 @@ async def leg_handler(message: types.Message):
             user_id = message.reply_to_message.from_user.id
             if await lib.is_user_registered(user_id=user_id):
                 leg_message = await lib.leg(user_id)
-                user_photo = await bot.get_user_profile_photos(user_id=user_id, limit=1)
-                if user_photo.photos:
-                    photo_file_id = user_photo.photos[0][-1].file_id
-                    await bot.send_photo(chat_id=message.chat.id, photo=photo_file_id, caption=leg_message, parse_mode='HTML')
-                else:
-                    await message.reply(leg_message)
+                await message.reply(text=leg_message, parse_mode='HTML')
             else:
                 await message.reply("Этот пользователь еще не зарегестрирован!")
         else:
             user_id = message.from_user.id
             if await lib.is_user_registered(user_id=user_id):
                 leg_message = await lib.leg(user_id)
-                user_photo = await bot.get_user_profile_photos(user_id=user_id, limit=1)
-                if user_photo.photos:
-                    photo_file_id = user_photo.photos[0][-1].file_id
-                    await bot.send_photo(chat_id=message.chat.id, photo=photo_file_id, caption=leg_message, parse_mode='HTML')
-                else:
-                    await message.reply(leg_message)
+                await message.reply(text=leg_message, parse_mode='HTML')
             else:
                 await reg_handler(message)
                 await leg_handler(message)
@@ -347,28 +318,18 @@ async def epic_handler(message: types.Message):
         if message.reply_to_message:
             user_id = message.reply_to_message.from_user.id
             if await lib.is_user_registered(user_id=user_id):
-                epic_message = await lib.epic(user_id)
-                user_photo = await bot.get_user_profile_photos(user_id=user_id, limit=1)
-                if user_photo.photos:
-                    photo_file_id = user_photo.photos[0][-1].file_id
-                    await bot.send_photo(chat_id=message.chat.id, photo=photo_file_id, caption=epic_message, parse_mode='HTML')
-                else:
-                    await message.reply(epic_message)
+                leg_message = await lib.epic(user_id)
+                await message.reply(text=leg_message, parse_mode='HTML')
             else:
                 await message.reply("Этот пользователь еще не зарегестрирован!")
         else:
             user_id = message.from_user.id
             if await lib.is_user_registered(user_id=user_id):
-                epic_message = await lib.epic(user_id)
-                user_photo = await bot.get_user_profile_photos(user_id=user_id, limit=1)
-                if user_photo.photos:
-                    photo_file_id = user_photo.photos[0][-1].file_id
-                    await bot.send_photo(chat_id=message.chat.id, photo=photo_file_id, caption=epic_message, parse_mode='HTML')
-                else:
-                    await message.reply(epic_message)
+                leg_message = await lib.epic(user_id)
+                await message.reply(text=leg_message, parse_mode='HTML')
             else:
                 await reg_handler(message)
-                await epic_handler(message)
+                await leg_handler(message)
     except:
         traceback.print_exc()
         await bot.send_message(chat_id=1167542251, text=f"Error: {e}")
