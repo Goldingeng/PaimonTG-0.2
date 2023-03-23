@@ -38,6 +38,15 @@ async def acc_handler(message: types.Message):
         if message.reply_to_message:
             user_id = message.reply_to_message.from_user.id
             if await lib.is_user_registered(user_id=user_id):
+                keyboard = types.InlineKeyboardMarkup()
+                button1 = types.InlineKeyboardButton(text="🫖", callback_data="kettle")
+                keyboard.row(button1)
+                button2 = types.InlineKeyboardButton(text="🟪", callback_data="epic")
+                button3 = types.InlineKeyboardButton(text="🟨", callback_data="leg")
+                keyboard.row(button2, button3)
+                button4 = types.InlineKeyboardButton(text="Вид", callback_data="view")
+                button5 = types.InlineKeyboardButton(text="Баннер", callback_data="banner")
+                keyboard.row(button4, button5)
                 await message.reply(acc_message, parse_mode='HTML')
             else:
                 await message.reply("Этот пользователь еще не зарегистрирован!")
