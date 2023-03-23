@@ -70,7 +70,7 @@ async def acc(user_id):
                     if kettle_info[2] == 4 else "Восход за горами 🌄" 
 
                 message = f"""<b>{user_info[1]}</b> ✔️
-    {user_info[4]}
+{user_info[4]}
 
 <b>Примогемы:</b>  {user_info[5]} 💠    
 <b>Ранг:</b>  {user_info[2]} 🔮     <b>Опыт:</b>{user_info[3]}/1000 📜        
@@ -96,7 +96,7 @@ async def acc(user_id):
                         else:
                             leg += ""  # add an empty string to avoid a trailing newline
                 message = f"""<b>{user_info[1]}</b> ✔️
-    {user_info[4]}
+{user_info[4]}
 
 <b>Примогемы:</b>  {user_info[5]} 💠    
 <b>Ранг:</b>  {user_info[2]} 🔮     <b>Опыт:</b>{user_info[3]}/1000 📜        
@@ -119,7 +119,7 @@ async def acc(user_id):
                         else:
                             leg += ""  # add an empty string to avoid a trailing newline
                 message = f"""<b>{user_info[1]}</b> ✔️
-    {user_info[4]}
+{user_info[4]}
 
 <b>Примогемы:</b>  {user_info[5]} 💠    
 <b>Ранг:</b>  {user_info[2]} 🔮     <b>Опыт:</b>{user_info[3]}/1000 📜        
