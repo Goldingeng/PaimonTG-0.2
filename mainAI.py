@@ -47,7 +47,7 @@ async def acc_handler(message: types.Message):
                 button4 = types.InlineKeyboardButton(text="Вид", callback_data="view")
                 button5 = types.InlineKeyboardButton(text="Баннер", callback_data="banner")
                 keyboard.row(button4, button5)
-                await message.reply(acc_message, parse_mode='HTML')
+                await message.reply(acc_message, parse_mode='HTML', reply_markup=keyboard)
             else:
                 await message.reply("Этот пользователь еще не зарегистрирован!")
         else:
@@ -63,7 +63,7 @@ async def acc_handler(message: types.Message):
                 button4 = types.InlineKeyboardButton(text="Вид", callback_data="view")
                 button5 = types.InlineKeyboardButton(text="Баннер", callback_data="banner")
                 keyboard.row(button4, button5)
-                await message.reply(acc_message, parse_mode='HTML')
+                await message.reply(acc_message, parse_mode='HTML', reply_markup=keyboard)
             else:
                 await reg_handler(message)
                 await acc_handler(message)
