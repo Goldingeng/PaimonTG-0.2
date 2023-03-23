@@ -69,7 +69,7 @@ async def acc(user_id):
                     if kettle_info[2] == 3 else "Восход 🌅" \
                     if kettle_info[2] == 4 else "Восход за горами 🌄" 
 
-                message = f"""<b>▶️ {user_info[1]}</b> ✔️
+                message = f"""<b>{user_info[1]}</b> ✔️
     {user_info[4]}
 
 <b>Примогемы:</b>  {user_info[5]} 💠    
@@ -95,7 +95,7 @@ async def acc(user_id):
                             leg += "\n"
                         else:
                             leg += ""  # add an empty string to avoid a trailing newline
-                message = f"""<b>▶️ {user_info[1]}</b> ✔️
+                message = f"""<b>{user_info[1]}</b> ✔️
     {user_info[4]}
 
 <b>Примогемы:</b>  {user_info[5]} 💠    
@@ -118,7 +118,7 @@ async def acc(user_id):
                             leg += "\n"
                         else:
                             leg += ""  # add an empty string to avoid a trailing newline
-                message = f"""<b>▶️ {user_info[1]}</b> ✔️
+                message = f"""<b>{user_info[1]}</b> ✔️
     {user_info[4]}
 
 <b>Примогемы:</b>  {user_info[5]} 💠    
