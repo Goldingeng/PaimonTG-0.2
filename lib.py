@@ -90,6 +90,29 @@ async def acc(user_id):
                 columns = [description[0] for description in cursor.description]
                 for i in range(1, len(columns)):
                     if row[i] != 0:
+                        leg += f"{columns[i]}: {row[i]}⭐️⭐️⭐️⭐️⭐️"
+                        if i < len(columns) - 1:
+                            leg += "\n"
+                        else:
+                            leg += ""  # add an empty string to avoid a trailing newline
+                message = f"""<b>{user_info[1]}</b> ✔️
+{user_info[4]} 🪧
+
+<b>Примогемы:</b>  {user_info[5]} 💠    
+<b>Ранг:</b>  {user_info[2]} 🔮     <b>Опыт:</b>{user_info[3]}/1000 📜        
+<b>История:</b>  {user_info[7]} ⏳  <b>Гарант:</b> {guarantee} 🧿
+
+<b>Леги:</b>
+
+{leg}
+"""
+            if user_info[12] == 3:
+                leg = ""
+                cursor = await conn.execute(f"SELECT * FROM personEpic WHERE user_id = {user_id}")
+                row = await cursor.fetchone()
+                columns = [description[0] for description in cursor.description]
+                for i in range(1, len(columns)):
+                    if row[i] != 0:
                         leg += f"{columns[i]}: {row[i]}⭐️⭐️⭐️⭐️"
                         if i < len(columns) - 1:
                             leg += "\n"
@@ -103,29 +126,6 @@ async def acc(user_id):
 <b>История:</b>  {user_info[7]} ⏳  <b>Гарант:</b> {guarantee} 🧿
 
 <b>Эпики:</b>
-
-{leg}
-"""
-            if user_info[12] == 3:
-                leg = ""
-                cursor = await conn.execute(f"SELECT * FROM personEpic WHERE user_id = {user_id}")
-                row = await cursor.fetchone()
-                columns = [description[0] for description in cursor.description]
-                for i in range(1, len(columns)):
-                    if row[i] != 0:
-                        leg += f"{columns[i]}: {row[i]}⭐️⭐️⭐️⭐️⭐️"
-                        if i < len(columns) - 1:
-                            leg += "\n"
-                        else:
-                            leg += ""  # add an empty string to avoid a trailing newline
-                message = f"""<b>{user_info[1]}</b> ✔️
-{user_info[4]} 🪧
-
-<b>Примогемы:</b>  {user_info[5]} 💠    
-<b>Ранг:</b>  {user_info[2]} 🔮     <b>Опыт:</b>{user_info[3]}/1000 📜        
-<b>История:</b>  {user_info[7]} ⏳  <b>Гарант:</b> {guarantee} 🧿
-
-<b>Легендарки:</b>
 
 {leg}
 """
@@ -488,9 +488,9 @@ async def twist(user_id):
             cursor = await conn.execute(f"UPDATE users SET exp = exp + 150, wallet = (wallet - 1600) + {prim} WHERE user_id = ?", (user_id,))
             await conn.commit()
             await cursor.close()
-        message_banner = "Твоя награда:\n"
         message_twist_str = "".join(reward)
-        message_banner += f"""▶️{info[5]}
+        message_banner == f"""▶️{info[5]}
+Твоя награда:\n
 {message_twist_str}
 ▶️Примогемы: {prim} 💠
 ▶️Опыт: 150 📜"""
@@ -591,8 +591,8 @@ async def rank(user_id):
                 exp_ = rank_new * 1000
                 await conn.execute(f"UPDATE users SET exp = exp - {exp_}, rank = rank + {rank_new}, wallet = wallet + ({rank_new} * 1000) WHERE user_id = ?", (user_id,))
                 await conn.commit()
-                message = f"""▶️Поздравляю!
-{exp[1]}, твой уровень повышен на {rank_new}!
+                message = f"""▶️{exp[1]}
+Поздравляю! Твой уровень повышен на {rank_new}!
 Твоя награда: {rank_new * 1000} 💠!
                 """
             else:
@@ -629,11 +629,11 @@ async def up(mod, user_id):
                             await conn.execute(f"UPDATE users SET wallet = wallet - {up_price} WHERE user_id = ?", (user_id,))
                             await conn.execute(f"UPDATE kettle SET home = home + 1 WHERE user_id = ?", (user_id,))
                             await conn.commit()
-                            message = f"▶️Успешно!\n{wallet[1]}, ты прокочал дом на 1 уровень!"
+                            message = f"▶️{wallet[1]}\Успешно! Ты прокочал дом на 1 уровень!"
                         else:
-                            message = f"▶️{wallet[1]}, у тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
+                            message = f"▶️{wallet[1]}\nУ тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
                     else:
-                        message = f"▶️{wallet[1]}, оно максимального уровня!"
+                        message = f"▶️{wallet[1]}\nПостройка максимального уровня!"
                     
                 if mod == 2:
                     await cursor.execute("SELECT pool FROM kettle WHERE user_id = ?", (user_id,))
@@ -648,9 +648,9 @@ async def up(mod, user_id):
                             await conn.commit()
                             message = f"▶️Успешно!\n{wallet[1]}, ты прокочал обустройвство на 1 уровень!"
                         else:
-                            message = f"▶️{wallet[1]}, у тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
+                            message = f"▶️{wallet[1]}\nУ тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
                     else:
-                        message = f"▶️{wallet[1]}, оно максимального уровня!"
+                        message = f"▶️{wallet[1]}\nПостройка максимального уровня!"
                     
                 if mod == 3:
                     await cursor.execute("SELECT fence FROM kettle WHERE user_id = ?", (user_id,))
@@ -665,9 +665,9 @@ async def up(mod, user_id):
                             await conn.commit()
                             message = f"▶️Успешно!\n{wallet[1]}, ты прокочал бассейн на 1 уровень!"
                         else:
-                            message = f"▶️{wallet[1]}, у тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
+                            message = f"▶️{wallet[1]}\nУ тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
                     else:
-                        message = f"▶️{wallet[1]}, оно максимального уровня!"
+                        message = f"▶️{wallet[1]}\nПостройка максимального уровня!"
                     
                 if mod == 4:
                     await cursor.execute("SELECT home_improvement FROM kettle WHERE user_id = ?", (user_id,))
@@ -682,9 +682,9 @@ async def up(mod, user_id):
                             await conn.commit()
                             message =f"▶️Успешно!\n{wallet[1]}, ты прокочал ограждение на 1 уровень!"
                         else:
-                            message = f"▶️{wallet[1]}, у тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
+                            message = f"▶️{wallet[1]}\nУ тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
                     else:
-                        message = message = f"▶️{wallet[1]}, оно максимального уровня!"
+                        message = f"▶️{wallet[1]}\nПостройка максимального уровня!"
                     
                 if mod == 5:
                     await cursor.execute("SELECT scenery FROM kettle WHERE user_id = ?", (user_id,))
@@ -699,9 +699,9 @@ async def up(mod, user_id):
                             await conn.commit()
                             message = f"▶️Успешно!\n{wallet[1]}, ты прокочал пейзаж на 1 уровень!"
                         else:
-                            message = f"▶️{wallet[1]}, у тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
+                            message = f"▶️{wallet[1]}\nУ тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
                     else:
-                        message = message = f"▶️{wallet[1]}, оно максимального уровня!"
+                        message = f"▶️{wallet[1]}\nПостройка максимального уровня!"
                 await cursor.close()
                 return message
     except Exception as e:
@@ -727,9 +727,9 @@ async def blessing(user_id):
                 if time[0][0] != data:
                     await conn.execute("UPDATE users SET wallet = wallet + ?, hom_time = ? WHERE user_id = ?", (reward, data, user_id))
                     await conn.commit()
-                    message = f"▶️Успешно!\n{user_name[0]}, твоя награда: {reward} примогемов 💠"
+                    message = f"▶️{user_name[0]}\n,Успешно! Твоя награда: {reward} примогемов 💠"
                 else: 
-                    message = f"▶️{user_name[0]}, ты уже получал сегодня благословеение!\nПриходи завтра!"
+                    message = f"▶️{user_name[0]}\nТы уже получал сегодня благословеение!\nПриходи завтра!"
             await cursor.close()
             return message
     except Exception as e:
@@ -809,7 +809,7 @@ async def view(user_id):
                     mod = info[0] + 1
                 await conn.execute("UPDATE users SET mod = ? WHERE user_id = ?", (mod, user_id))
                 await conn.commit()
-                message = f"▶️Успешно!\n{info[1]}\nТеперь вид твоего аккаунта изменен!"
+                message = f"▶️{info[1]}\nУспешно!\nТеперь вид твоего аккаунта изменен!"
                 return message
     except Exception as e:
         traceback.print_exc()

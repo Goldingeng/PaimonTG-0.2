@@ -102,7 +102,6 @@ async def view_callback_handler(callback_query: types.CallbackQuery):
             user_id = callback_query.from_user.id
             if await lib.is_user_registered(user_id=user_id):
                 await bot.send_message(chat_id=callback_query.message.chat.id, text=await lib.view(user_id = user_id), parse_mode='HTML')
-                await acc_handler(message)
             else:
                 await reg_handler(message)
                 await view_callback_handler(callback_query)
