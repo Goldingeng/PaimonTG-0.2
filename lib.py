@@ -69,8 +69,8 @@ async def acc(user_id):
                     if kettle_info[2] == 3 else "Восход 🌅" \
                     if kettle_info[2] == 4 else "Восход за горами 🌄" 
 
-                message = f"""<b>{user_info[1]}</b> ✔️
-{user_info[4]} 🪧
+                message = f"""<b>▶️ {user_info[1]}</b> ✔️
+▶{user_info[4]} 🪧
 
 <b>Примогемы:</b>  {user_info[5]} 💠    
 <b>Ранг:</b>  {user_info[2]} 🔮     <b>Опыт:</b>{user_info[3]}/1000 📜        
@@ -95,8 +95,8 @@ async def acc(user_id):
                             leg += "\n"
                         else:
                             leg += ""  # add an empty string to avoid a trailing newline
-                message = f"""<b>{user_info[1]}</b> ✔️
-{user_info[4]} 🪧
+                message = f"""<b>▶️ {user_info[1]}</b> ✔️
+▶{user_info[4]} 🪧
 
 <b>Примогемы:</b>  {user_info[5]} 💠    
 <b>Ранг:</b>  {user_info[2]} 🔮     <b>Опыт:</b>{user_info[3]}/1000 📜        
@@ -118,8 +118,8 @@ async def acc(user_id):
                             leg += "\n"
                         else:
                             leg += ""  # add an empty string to avoid a trailing newline
-                message = f"""<b>{user_info[1]}</b> ✔️
-{user_info[4]} 🪧
+                message = f"""<b>▶️ {user_info[1]}</b> ✔️
+▶{user_info[4]} 🪧
 
 <b>Примогемы:</b>  {user_info[5]} 💠    
 <b>Ранг:</b>  {user_info[2]} 🔮     <b>Опыт:</b>{user_info[3]}/1000 📜        
@@ -146,12 +146,12 @@ async def leg(user_id):
             columns = [description[0] for description in cursor.description]
             for i in range(1, len(columns)):
                 if row[i] != 0:
-                    message += f"║{columns[i]}: {row[i]}⭐️⭐️⭐️⭐️⭐️"
+                    message += f"{columns[i]}: {row[i]}⭐️⭐️⭐️⭐️⭐️"
                     if i < len(columns) - 1:
                         message += "\n"
                     if message == None:
                         message = "У тебя нет легендарок!"
-            message = f"""{user_name[0]}
+            message = f"""▶️ {user_name[0]}
 Твои  легендарки:
 {message}"""
             await cursor.close()
@@ -177,7 +177,7 @@ async def epic(user_id):
                         message += "\n"
                     if message == None:
                         message = "У тебя нет эпиков!"
-            message = f"""{user_name[0]}
+            message = f"""▶️ {user_name[0]}
 Твои эпики:
 {message}"""
             await cursor.close()
@@ -787,7 +787,8 @@ async def price(user_id):
                 else:
                     scenery = rows[0][4] * 5000
 
-                message = f"""{user_name[0]}, цена твоей прокачки          
+                message = f"""▶️ {user_name[0]}
+Цена твоей прокачки          
 Дом: {hom} 💠
 Бассейн: {pool} 💠
 Забор: {fence} 💠
