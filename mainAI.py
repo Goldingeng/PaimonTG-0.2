@@ -542,7 +542,8 @@ async def up_handler(message: types.Message):
     try:
         user_id = message.from_user.id
         args = message.text.split()[1:]
-        text = ' '.join(args)
+        text = ''.join(args)
+        print(text)
         mod = 0  # установка значения по умолчанию
         if await lib.is_user_registered(user_id=user_id):
             if text == "дом":
@@ -553,7 +554,7 @@ async def up_handler(message: types.Message):
                 mod = 3
             if text == "обустройство":
                 mod = 4
-            if text == "пейзаж":
+            elif text == "пейзаж":
                 mod = 5
             else:
                 await message.reply("Неверный тип улучшения.")
