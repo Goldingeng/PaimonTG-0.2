@@ -742,7 +742,7 @@ async def price(user_id):
     try:
         async with aiosqlite.connect('BD') as conn:
             async with conn.cursor() as cursor:
-                await cursor.execute('SELECT home, pool, fence, home_improvement, scenery FROM kettle')
+                await cursor.execute(f'SELECT home, pool, fence, home_improvement, scenery FROM kettle WHERE user_id = {user_id}')
                 rows = await cursor.fetchall()
                 cursor = await conn.execute(f"SELECT user_name FROM users WHERE user_id = {user_id}")
                 user_name = await cursor.fetchone()
