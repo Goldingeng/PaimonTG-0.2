@@ -10,11 +10,9 @@ import traceback
 import kettle
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-
 TOKEN = "5409304847:AAGtNYiN8p_GtHzvYZLQB6S6oGG2sMAwHv0"
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
-
 
 @dp.message_handler(commands=["reg", "рег"])
 async def reg_handler(message: types.Message):
@@ -30,7 +28,6 @@ async def reg_handler(message: types.Message):
     except Exception as error: 
         traceback.print_exc()
         await bot.send_message(chat_id=1167542251, text=f"{error}\nreg_handler")
-
 
 @dp.message_handler(commands=["acc", "акк"])
 async def acc_handler(message: types.Message):
