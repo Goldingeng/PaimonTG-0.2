@@ -625,7 +625,7 @@ async def up(mod, user_id):
                     hom = await cursor.fetchone()
                     await cursor.execute("SELECT wallet, user_name FROM users WHERE user_id = ?", (user_id,))
                     wallet = await cursor.fetchone()
-                    up_price = (hom[0] + 1 ) * 10000
+                    up_price = (hom[0] + 1 ) * 4000
                     if hom[0] <= 4:
                         if wallet[0] >= up_price:
                             await conn.execute(f"UPDATE users SET wallet = wallet - {up_price} WHERE user_id = ?", (user_id,))
@@ -642,7 +642,7 @@ async def up(mod, user_id):
                     hom = await cursor.fetchone()
                     await cursor.execute("SELECT wallet FROM users WHERE user_id = ?", (user_id,))
                     wallet = await cursor.fetchone()
-                    up_price = (hom[0] + 1 ) * 10000
+                    up_price = (hom[0] + 1 ) * 4000
                     if hom[0] <= 4:
                         if wallet[0] >= up_price:
                             await conn.execute(f"UPDATE users SET wallet = wallet - {up_price} WHERE user_id = ?", (user_id,))
@@ -659,7 +659,7 @@ async def up(mod, user_id):
                     hom = await cursor.fetchone()
                     await cursor.execute("SELECT wallet FROM users WHERE user_id = ?", (user_id,))
                     wallet = await cursor.fetchone()
-                    up_price = (hom[0] + 1 ) * 10000
+                    up_price = (hom[0] + 1 ) * 4000
                     if hom[0] <= 4:
                         if wallet[0] >= up_price:
                             await conn.execute(f"UPDATE users SET wallet = wallet - {up_price} WHERE user_id = ?", (user_id,))
@@ -676,7 +676,7 @@ async def up(mod, user_id):
                     hom = await cursor.fetchone()
                     await cursor.execute("SELECT wallet FROM users WHERE user_id = ?", (user_id,))
                     wallet = await cursor.fetchone()
-                    up_price = (hom[0] + 1 ) * 10000
+                    up_price = (hom[0] + 1 ) * 4000
                     if hom[0] <= 4:
                         if wallet[0] >= up_price:
                             await conn.execute(f"UPDATE users SET wallet = wallet - {up_price} WHERE user_id = ?", (user_id,))
@@ -693,7 +693,7 @@ async def up(mod, user_id):
                     hom = await cursor.fetchone()
                     await cursor.execute("SELECT wallet FROM users WHERE user_id = ?", (user_id,))
                     wallet = await cursor.fetchone()
-                    up_price = (hom[0] + 1 ) * 10000
+                    up_price = (hom[0] + 1 ) * 5000
                     if hom[0] <= 4:
                         if wallet[0] >= up_price:
                             await conn.execute(f"UPDATE users SET wallet = wallet - {up_price} WHERE user_id = ?", (user_id,))
@@ -718,7 +718,7 @@ async def blessing(user_id):
                 cursor = await conn.execute(f"SELECT user_name FROM users WHERE user_id = {user_id}")
                 user_name = await cursor.fetchone()
                 result_sum = sum(sum(row) for row in rows)
-                reward = result_sum * 500
+                reward = result_sum * 300
                 data = datetime.datetime.now().day
                 data = data
                 print(data)
@@ -737,6 +737,7 @@ async def blessing(user_id):
     except Exception as e:
         traceback.print_exc()
 
+
 async def price(user_id):
     try:
         async with aiosqlite.connect('BD') as conn:
@@ -752,7 +753,7 @@ async def price(user_id):
                 if rows[0][0] == 0:
                     hom = 5000  
                 else:
-                    hom = rows[0][0]  * 10000
+                    hom = rows[0][0]  * 4000
 
                 # Pool
                 if rows[0][1] == 5:
@@ -760,7 +761,7 @@ async def price(user_id):
                 if rows[0][1] == 0:
                     pool = 5000
                 else:
-                    pool = rows[0][1] * 10000
+                    pool = rows[0][1] * 4000
 
                 # Fence
                 if rows[0][2] == 5:
@@ -768,7 +769,7 @@ async def price(user_id):
                 if rows[0][2] == 0:
                     fence = 5000                    
                 else:
-                    fence = rows[0][2] * 10000
+                    fence = rows[0][2] * 4000
 
                 # Home Improvement
                 if rows[0][3] == 5:
@@ -776,7 +777,7 @@ async def price(user_id):
                 if rows[0][3] == 0:
                     home_imp = 5000
                 else:
-                    home_imp = rows[0][3] * 10000
+                    home_imp = rows[0][3] * 4000
 
                 # Scenery
                 if rows[0][4] == 5:
@@ -815,3 +816,4 @@ async def view(user_id):
     except Exception as e:
         traceback.print_exc()
 
+#,kf ,kf ,kf
