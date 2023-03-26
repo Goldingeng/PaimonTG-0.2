@@ -753,7 +753,7 @@ async def price(user_id):
                 if rows[0][0] == 0:
                     hom = 5000  
                 else:
-                    hom = rows[0][0]  * 4000
+                    hom = (rows[0][0] + 1)  * 4000
 
                 # Pool
                 if rows[0][1] == 5:
@@ -761,7 +761,7 @@ async def price(user_id):
                 if rows[0][1] == 0:
                     pool = 5000
                 else:
-                    pool = rows[0][1] * 4000
+                    pool = (rows[0][1] + 1) * 4000
 
                 # Fence
                 if rows[0][2] == 5:
@@ -769,7 +769,7 @@ async def price(user_id):
                 if rows[0][2] == 0:
                     fence = 5000                    
                 else:
-                    fence = rows[0][2] * 4000
+                    fence = (rows[0][2] + 1) * 4000
 
                 # Home Improvement
                 if rows[0][3] == 5:
@@ -777,7 +777,7 @@ async def price(user_id):
                 if rows[0][3] == 0:
                     home_imp = 5000
                 else:
-                    home_imp = rows[0][3] * 4000
+                    home_imp = (rows[0][3] + 1) * 4000
 
                 # Scenery
                 if rows[0][4] == 5:
@@ -785,7 +785,7 @@ async def price(user_id):
                 if rows[0][4] == 0:
                     scenery = 5000
                 else:
-                    scenery = rows[0][4] * 5000
+                    scenery = (rows[0][4] + 1) * 5000
 
                 message = f"""▶️ {user_name[0]}
 Цена твоей прокачки          
