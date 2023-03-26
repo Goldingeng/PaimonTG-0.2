@@ -548,16 +548,23 @@ async def up_handler(message: types.Message):
         if await lib.is_user_registered(user_id=user_id):
             if text == "дом":
                 mod = 1
-            if text == "бассейн":  # добавление проверки на соответствие текста
+            elif text == "бассейн":  # добавление проверки на соответствие текста
                 mod = 2
-            if text == "ограждение":
+            elif text == "ограждение":
                 mod = 3
-            if text == "обустройство":
+            elif text == "обустройство":
                 mod = 4
             elif text == "пейзаж":
                 mod = 5
             else:
-                await message.reply("Неверный тип улучшения.")
+                await message.reply("""Неверный тип улучшения.
+
+Пример улучшения
+/up дом
+/up обустройство
+/up бассейн
+/up ограждение
+/up пейзаж""")
                 return
             await message.reply(text=await lib.up(user_id=user_id, mod=mod))
         else: 
