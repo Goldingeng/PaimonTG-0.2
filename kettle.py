@@ -40,6 +40,10 @@ async def main(user_id):
 <b>Бассейн:</b>  {pool}
 <b>Ограждение:</b>  {fence}
 <b>Пейзаж:</b>  {scenery}"""
+
         return message
+        a = "d"
     except Exception as e:
         print(e)
+
+#import lib

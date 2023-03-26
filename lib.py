@@ -737,7 +737,6 @@ async def blessing(user_id):
     except Exception as e:
         traceback.print_exc()
 
-
 async def price(user_id):
     try:
         async with aiosqlite.connect('BD') as conn:
@@ -798,7 +797,6 @@ async def price(user_id):
                 return message
     except Exception as e:
         traceback.print_exc()
-
 
 async def view(user_id):
     try:
