@@ -624,18 +624,18 @@ async def up(mod, user_id):
                     await cursor.execute("SELECT home FROM kettle WHERE user_id = ?", (user_id,))
                     hom = await cursor.fetchone()
                     await cursor.execute("SELECT wallet, user_name FROM users WHERE user_id = ?", (user_id,))
-                    wallet = await cursor.fetchone()
+                    wallet1 = await cursor.fetchone()
                     up_price = (hom[0] + 1 ) * 4000
                     if hom[0] <= 4:
-                        if wallet[0] >= up_price:
+                        if wallet1[0] >= up_price:
                             await conn.execute(f"UPDATE users SET wallet = wallet - {up_price} WHERE user_id = ?", (user_id,))
                             await conn.execute(f"UPDATE kettle SET home = home + 1 WHERE user_id = ?", (user_id,))
                             await conn.commit()
-                            message = f"▶️{wallet[1]}\Ты прокочал дом на 1 уровень!"
+                            message = f"▶️{wallet1[1]}\Ты прокочал дом на 1 уровень!"
                         else:
-                            message = f"▶️{wallet[1]}\nУ тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
+                            message = f"▶️{wallet1[1]}\nУ тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
                     else:
-                        message = f"▶️{wallet[1]}\nПостройка максимального уровня!"
+                        message = f"▶️{wallet1[1]}\nПостройка максимального уровня!"
                     
                 if mod == 2:
                     await cursor.execute("SELECT pool FROM kettle WHERE user_id = ?", (user_id,))
@@ -648,11 +648,11 @@ async def up(mod, user_id):
                             await conn.execute(f"UPDATE users SET wallet = wallet - {up_price} WHERE user_id = ?", (user_id,))
                             await conn.execute(f"UPDATE kettle SET pool = pool + 1 WHERE user_id = ?", (user_id,))
                             await conn.commit()
-                            message = f"▶️{wallet[1]}\nТы прокочал обустройвство на 1 уровень!"
+                            message = f"▶️{wallet1[1]}\nТы прокочал обустройвство на 1 уровень!"
                         else:
-                            message = f"▶️{wallet[1]}\nУ тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
+                            message = f"▶️{wallet1[1]}\nУ тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
                     else:
-                        message = f"▶️{wallet[1]}\nПостройка максимального уровня!"
+                        message = f"▶️{wallet1[1]}\nПостройка максимального уровня!"
                     
                 if mod == 3:
                     await cursor.execute("SELECT fence FROM kettle WHERE user_id = ?", (user_id,))
@@ -665,11 +665,11 @@ async def up(mod, user_id):
                             await conn.execute(f"UPDATE users SET wallet = wallet - {up_price} WHERE user_id = ?", (user_id,))
                             await conn.execute(f"UPDATE kettle SET fence = fence + 1 WHERE user_id = ?", (user_id,))
                             await conn.commit()
-                            message = f"▶️{wallet[1]}\nТы прокочал бассейн на 1 уровень!"
+                            message = f"▶️{wallet1[1]}\nТы прокочал бассейн на 1 уровень!"
                         else:
-                            message = f"▶️{wallet[1]}\nУ тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
+                            message = f"▶️{wallet1[1]}\nУ тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
                     else:
-                        message = f"▶️{wallet[1]}\nПостройка максимального уровня!"
+                        message = f"▶️{wallet1[1]}\nПостройка максимального уровня!"
                     
                 if mod == 4:
                     await cursor.execute("SELECT home_improvement FROM kettle WHERE user_id = ?", (user_id,))
@@ -682,11 +682,11 @@ async def up(mod, user_id):
                             await conn.execute(f"UPDATE users SET wallet = wallet - {up_price} WHERE user_id = ?", (user_id,))
                             await conn.execute(f"UPDATE kettle SET home_improvement = home_improvement + 1 WHERE user_id = ?", (user_id,))
                             await conn.commit()
-                            message =f"▶️{wallet[1]}\nТыы прокочал ограждение на 1 уровень!"
+                            message =f"▶️{wallet1[1]}\nТыы прокочал ограждение на 1 уровень!"
                         else:
-                            message = f"▶️{wallet[1]}\nУ тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
+                            message = f"▶️{wallet1[1]}\nУ тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
                     else:
-                        message = f"▶️{wallet[1]}\nПостройка максимального уровня!"
+                        message = f"▶️{wallet1[1]}\nПостройка максимального уровня!"
                     
                 if mod == 5:
                     await cursor.execute("SELECT scenery FROM kettle WHERE user_id = ?", (user_id,))
@@ -699,9 +699,9 @@ async def up(mod, user_id):
                             await conn.execute(f"UPDATE users SET wallet = wallet - {up_price} WHERE user_id = ?", (user_id,))
                             await conn.execute(f"UPDATE kettle SET scenery = scenery + 1 WHERE user_id = ?", (user_id,))
                             await conn.commit()
-                            message = f"▶️{wallet[1]}\nТыы прокочал пейзаж на 1 уровень!"
+                            message = f"▶️{wallet1[1]}\nТы прокочал пейзаж на 1 уровень!"
                         else:
-                            message = f"▶️{wallet[1]}\nУ тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
+                            message = f"▶️{wallet1[1]}\nУ тебя не хватает примогемов!\nСтоимость прокачки: {up_price} 💠"
                     else:
                         message = f"▶️{wallet[1]}\nПостройка максимального уровня!"
                 await cursor.close()
