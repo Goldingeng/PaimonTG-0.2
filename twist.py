@@ -1,4 +1,5 @@
 import lib
+import random
 
 async def twist(user_id):
     try:

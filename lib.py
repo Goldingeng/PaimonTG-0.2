@@ -835,3 +835,5 @@ async def view(user_id):
                 return message
     except Exception as e:
         traceback.print_exc()
+
+d = "w"

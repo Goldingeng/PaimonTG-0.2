@@ -10,9 +10,11 @@ import traceback
 import kettle
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
+
 TOKEN = "5409304847:AAGtNYiN8p_GtHzvYZLQB6S6oGG2sMAwHv0"
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
+
 
 @dp.message_handler(commands=["reg", "рег"])
 async def reg_handler(message: types.Message):
@@ -633,7 +635,7 @@ async def view_handler(message: types.Message):
 <b>цена прокачки чайник</b>
 <b>/улучшить /up</b>
 <b>прокачка компонента чайника, например /up дом</b>
-<b>/ник /nick, /статус /status</b>
+<b>/ник /nick, /статус /status</b> 
 <b>просто смена ник, статуса /статус "сам статус'</b>"""
 , parse_mode="HTML")
     except Exception as e:
