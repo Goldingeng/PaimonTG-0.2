@@ -790,11 +790,11 @@ async def price(user_id):
                 message = f"""▶️ {user_name[0]}
 Цена твоей прокачки          
 Дом: {hom} 💠
-Бассейн: {pool} 💠
-Забор: {fence} 💠
-Обустройсвто: {home_imp} 💠
-Оформление: {scenery} 💠
-Пример улучшения /up оформление"""
+Обустройство: {pool} 💠
+Бассейн: {fence} 💠
+Ограждение: {home_imp} 💠
+Пейзаж: {scenery} 💠
+Пример улучшения /up дом, /up обустройство, /up бассейн, /up ограждение, /up пейзаж"""
                 return message
     except Exception as e:
         traceback.print_exc()
