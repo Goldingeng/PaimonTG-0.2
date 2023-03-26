@@ -547,13 +547,13 @@ async def up_handler(message: types.Message):
         if await lib.is_user_registered(user_id=user_id):
             if text == "дом":
                 mod = 1
-            elif text == "обустройство":  # добавление проверки на соответствие текста
+            if text == "бассейн":  # добавление проверки на соответствие текста
                 mod = 2
-            elif text == "бассейн":
+            if text == "ограждение":
                 mod = 3
-            elif text == "ограждение":
+            if text == "обустройство":
                 mod = 4
-            elif text == "пейзаж":
+            if text == "пейзаж":
                 mod = 5
             else:
                 await message.reply("Неверный тип улучшения.")
