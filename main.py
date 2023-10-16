@@ -11,7 +11,7 @@ import kettle
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-TOKEN = "5409304847:AAGtNYiN8p_GtHzvYZLQB6S6oGG2sMAwHv0"
+TOKEN = "6237414088:AAE237XvDRBta9Rv0xFzZDqH-Ymjfk0b0Rg"
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
 
